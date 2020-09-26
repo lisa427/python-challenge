@@ -43,6 +43,13 @@ with open(budget_csv) as csv_file:
 
 average = sum(change_list) / len(change_list)
 
+greatest_increase = change_list[0]
+greatest_decrease = change_list[0]
+
+
+
 print(lines)
 print(total)
-print(average)
+print(round(average, 2))
+print(greatest_increase)
+print(greatest_decrease)
