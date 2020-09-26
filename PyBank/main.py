@@ -41,6 +41,8 @@ with open(budget_csv) as csv_file:
         change_list.append(int(row[1]) - num)
         num = int(row[1])
 
+average = sum(change_list) / len(change_list)
+
 print(lines)
 print(total)
-print(change_list)
+print(average)
