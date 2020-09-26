@@ -8,8 +8,13 @@ with open(budget_csv) as csv_file:
    
     csv_header = next(csv_file)
 
-    lines = len(list(csv_reader))
+    #lines = len(list(csv_reader))
 
-    print(lines)
+    #print(lines)
 
-    #for row in csv_reader:
+    total = 0
+
+    for row in csv_reader:
+        total += int(row[1])
+        
+    print(total)
