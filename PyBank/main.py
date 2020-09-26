@@ -70,10 +70,10 @@ with open(budget_csv) as csv_file:
             decrease_date = row[0]
         num2 = int(row[1])
   
-print(lines)
-print(total)
-print(round(average, 2))
-print(greatest_increase)
-print(greatest_decrease)
-print(increase_date)
-print(decrease_date)
+print("Financial Analysis")
+print("----------------------")
+print(f"Total Months: {lines}")
+print(f"Total: ${total}")
+print(f"Average Change: ${round(average, 2)}")
+print(f"Greatest Increase in Profits: {increase_date} (${greatest_increase})")
+print(f"Greatest Decrease in Profits: {decrease_date} (${greatest_decrease})")
