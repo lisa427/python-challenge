@@ -46,6 +46,11 @@ average = sum(change_list) / len(change_list)
 greatest_increase = change_list[0]
 greatest_decrease = change_list[0]
 
+for j in change_list:
+    if j > greatest_increase:
+        greatest_increase = j
+    elif j < greatest_decrease:
+        greatest_decrease = j
 
 
 print(lines)
