@@ -16,11 +16,20 @@ with open(budget_csv) as csv_file:
     lines = len(list(csv_reader))
 
 with open(budget_csv) as csv_file:
-    r = csv.reader(csv_file)
+    r = csv.reader(csv_file, delimiter=",")
     for i in range(1):
         next(r)
     row2 = next(r)
-    num = row2[1]
+    num = int(row2[1])
+
+with open(budget_csv) as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=",")  
+    next(csv_file)
+    next(csv_file)
+    for row in csv_reader:
+        row.append(int(row[1]) - num)
+        num = int(row[1])
+        print(row[2])
 
 print(lines)
 print(total)
