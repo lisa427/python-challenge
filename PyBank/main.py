@@ -52,9 +52,28 @@ for j in change_list:
     elif j < greatest_decrease:
         greatest_decrease = j
 
+with open(budget_csv) as csv_file:
+    s = csv.reader(csv_file, delimiter=",")
+    for i in range(1):
+        next(s)
+    row2 = next(s)
+    num2 = int(row2[1])
 
+with open(budget_csv) as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=",")  
+    next(csv_file)
+    next(csv_file)
+    for row in csv_reader:
+        if int(row[1]) - num2 == greatest_increase:
+            increase_date = row[0]
+        elif greatest_decrease == int(row[1]) - num2:
+            decrease_date = row[0]
+        num2 = int(row[1])
+  
 print(lines)
 print(total)
 print(round(average, 2))
 print(greatest_increase)
 print(greatest_decrease)
+print(increase_date)
+print(decrease_date)
