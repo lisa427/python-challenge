@@ -16,16 +16,6 @@ with open(election_csv) as csv_file:
         if row[2] not in name_list:
             name_list.append(row[2])
 
-#candidate_count = len(name_list)
-#for name in name_list:
-
-#with open(election_csv) as csv_file:
-    #csv_reader = csv.reader(csv_file, delimiter=",")  
-    #csv_header = next(csv_file)
-    #for row in csv_reader:
-        #for name in name_list:
-            #if name == row[2]:
-
 with open(election_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")  
     next(csv_file)
@@ -50,11 +40,14 @@ percentages = []
 for number in vote_counts:
     percentages.append(number/vote_total*100)
 
-print(vote_total)
-print(name_list)
-#print(candidate_count)
-print(vote_counts)
-print(winner_count)
-print(winner_index)
-print(winner_name)
-print(percentages)
+print("Election Results")
+print("----------------------")
+print(f"Total Votes: {vote_total}")
+print("----------------------")
+counter2 = 0
+for names in name_list:
+    print(f"{names}: {round(percentages[counter2])}% ({vote_counts[counter2]})")
+    counter2 = counter2 + 1
+print("----------------------")
+print(f"Winner: {winner_name}")
+print("----------------------")
