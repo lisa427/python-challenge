@@ -51,3 +51,18 @@ for names in name_list:
 print("----------------------")
 print(f"Winner: {winner_name}")
 print("----------------------")
+
+output_path = os.path.join("Analysis", "PyPoll_analysis.txt")
+output_file = open(output_path,"w")
+output_file.write("Election Results \n")
+output_file.write("---------------------- \n")
+output_file.write(f"Total Votes: {vote_total} \n")
+output_file.write("---------------------- \n")
+counter3 = 0
+for names in name_list:
+    output_file.write(f"{names}: {round(percentages[counter3])}% ({vote_counts[counter3]}) \n")
+    counter3 = counter3 + 1
+output_file.write("---------------------- \n")
+output_file.write(f"Winner: {winner_name} \n")
+output_file.write("----------------------")
+output_file.close()
