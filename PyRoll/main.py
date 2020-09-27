@@ -40,7 +40,18 @@ for name in name_list:
     vote_counts.append(all_votes.count(name_list[counter]))
     counter = counter + 1
 
+winner_count = vote_counts[0]
+for num in vote_counts:
+    if num > winner_count:
+        winner_count = num
+
+winner_index = vote_counts.index(winner_count)
+winner_name = name_list[winner_index]
+
 print(vote_total)
 print(name_list)
 #print(candidate_count)
 print(vote_counts)
+print(winner_count)
+print(winner_index)
+print(winner_name)
