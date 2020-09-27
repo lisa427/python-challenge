@@ -35,18 +35,20 @@ with open(election_csv) as csv_file:
 
 counter = 0
 vote_counts = []
-
 for name in name_list:
     vote_counts.append(all_votes.count(name_list[counter]))
     counter = counter + 1
 
-winner_count = vote_counts[0]
+winner_count = 0
 for num in vote_counts:
     if num > winner_count:
         winner_count = num
-
 winner_index = vote_counts.index(winner_count)
 winner_name = name_list[winner_index]
+
+percentages = []
+for number in vote_counts:
+    percentages.append(number/vote_total*100)
 
 print(vote_total)
 print(name_list)
@@ -55,3 +57,4 @@ print(vote_counts)
 print(winner_count)
 print(winner_index)
 print(winner_name)
+print(percentages)
