@@ -6,7 +6,7 @@ election_csv = os.path.join("Resources", "election_data.csv")
 with open(election_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")  
     csv_header = next(csv_file)
-    vote_count = len(list(csv_reader))
+    vote_total = len(list(csv_reader))
 
 with open(election_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")  
@@ -29,14 +29,18 @@ with open(election_csv) as csv_file:
 with open(election_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")  
     next(csv_file)
-    votes = []
-    counter = 0
+    all_votes = []
     for row in csv_reader:
-        votes.append(row[2])
+        all_votes.append(row[2])
 
-print(votes.count(name_list[counter]))
-    
+counter = 0
+vote_counts = []
 
-print(vote_count)
+for name in name_list:
+    vote_counts.append(all_votes.count(name_list[counter]))
+    counter = counter + 1
+
+print(vote_total)
 print(name_list)
 #print(candidate_count)
+print(vote_counts)
