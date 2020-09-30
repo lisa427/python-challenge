@@ -67,13 +67,36 @@ for date in dob:
     day = day[2]
     days.append(day)
 
+# creates list of reformatted dates
+new_dob = []
+counter = 0
+for date in dob:
+    new_date = (months[counter] + "/" + days[counter] + "/" + years[counter])
+    new_dob.append(new_date)
+    counter = counter + 1
+
 # creates a list from the SSN column from the csv file
 with open(employee_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")  
     next(csv_file)
-    ssn = []
+    ssns = []
     for row in csv_reader:
-        ssn.append(row[3])
+        ssns.append(row[3])
+
+# creates list of last 4 digits of ssn
+lastfour_ssn = []
+for ssn in ssns:
+    lastfour = ssn.split("-")
+    lastfour = lastfour[2]
+    lastfour_ssn.append(lastfour)
+
+# creates list of reformatted ssns
+new_ssns = []
+counter = 0
+for ssn in ssns:
+    new_ssn = ("***-**-" + lastfour_ssn[counter])
+    new_ssns.append(new_ssn)
+    counter = counter + 1
 
 # creates a list from the State column from the csv file
 with open(employee_csv) as csv_file:
@@ -83,8 +106,8 @@ with open(employee_csv) as csv_file:
     for row in csv_reader:
         state.append(row[4])
 
+print(emp_id[:10])
 print(first_names[:10])
 print(last_names[:10])
-print(years[:10])
-print(months[:10])
-print(days[:10])
+print(new_dob[:10])
+print(new_ssns[:10])
