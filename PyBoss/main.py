@@ -46,6 +46,27 @@ with open(employee_csv) as csv_file:
     for row in csv_reader:
         dob.append(row[2])
 
+# creates list of years
+years = []
+for date in dob:
+    year = date.split("-")
+    year = year[0]
+    years.append(year)
+
+# creates list of months
+months = []
+for date in dob:
+    month = date.split("-")
+    month = month[1]
+    months.append(month)
+
+# creates list of days
+days = []
+for date in dob:
+    day = date.split("-")
+    day = day[2]
+    days.append(day)
+
 # creates a list from the SSN column from the csv file
 with open(employee_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")  
@@ -64,3 +85,6 @@ with open(employee_csv) as csv_file:
 
 print(first_names[:10])
 print(last_names[:10])
+print(years[:10])
+print(months[:10])
+print(days[:10])
