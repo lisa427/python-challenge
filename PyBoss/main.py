@@ -3,6 +3,64 @@ import csv
 
 employee_csv = os.path.join("Resources", "employee_data.csv")
 
+# function to convert state name to state abbreviation
+def get_state(full_state):
+    us_state_abbrev = {
+        'Alabama': 'AL',
+        'Alaska': 'AK',
+        'Arizona': 'AZ',
+        'Arkansas': 'AR',
+        'California': 'CA',
+        'Colorado': 'CO',
+        'Connecticut': 'CT',
+        'Delaware': 'DE',
+        'Florida': 'FL',
+        'Georgia': 'GA',
+        'Hawaii': 'HI',
+        'Idaho': 'ID',
+        'Illinois': 'IL',
+        'Indiana': 'IN',
+        'Iowa': 'IA',
+        'Kansas': 'KS',
+        'Kentucky': 'KY',
+        'Louisiana': 'LA',
+        'Maine': 'ME',
+        'Maryland': 'MD',
+        'Massachusetts': 'MA',
+        'Michigan': 'MI',
+        'Minnesota': 'MN',
+        'Mississippi': 'MS',
+        'Missouri': 'MO',
+        'Montana': 'MT',
+        'Nebraska': 'NE',
+        'Nevada': 'NV',
+        'New Hampshire': 'NH',
+        'New Jersey': 'NJ',
+        'New Mexico': 'NM',
+        'New York': 'NY',
+        'North Carolina': 'NC',
+        'North Dakota': 'ND',
+        'Ohio': 'OH',
+        'Oklahoma': 'OK',
+        'Oregon': 'OR',
+        'Pennsylvania': 'PA',
+        'Rhode Island': 'RI',
+        'South Carolina': 'SC',
+        'South Dakota': 'SD',
+        'Tennessee': 'TN',
+        'Texas': 'TX',
+        'Utah': 'UT',
+        'Vermont': 'VT',
+        'Virginia': 'VA',
+        'Washington': 'WA',
+        'West Virginia': 'WV',
+        'Wisconsin': 'WI',
+        'Wyoming': 'WY',
+    }
+    abbrev_state = us_state_abbrev[full_state]
+    return abbrev_state
+
+
 # creates a list from the header
 with open(employee_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")  
@@ -102,12 +160,25 @@ for ssn in ssns:
 with open(employee_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")  
     next(csv_file)
-    state = []
+    states = []
     for row in csv_reader:
-        state.append(row[4])
+        states.append(row[4])
+
+# creates a list of reformatted states
+new_states = []
+counter = 0
+for state in states:
+    st = states[counter]
+    st2 = get_state(st)
+    new_states.append(st2)
+    counter = counter + 1
+
 
 print(emp_id[:10])
 print(first_names[:10])
 print(last_names[:10])
 print(new_dob[:10])
 print(new_ssns[:10])
+print(states[:10])
+print(new_states[:10])
+
