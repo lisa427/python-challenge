@@ -60,12 +60,6 @@ def get_state(full_state):
     abbrev_state = us_state_abbrev[full_state]
     return abbrev_state
 
-
-# creates a list from the header
-with open(employee_csv) as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=",")  
-    csv_header = next(csv_file)
-
 # creates a list from the Emp ID column from the csv file
 with open(employee_csv) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")  
@@ -173,12 +167,13 @@ for state in states:
     new_states.append(st2)
     counter = counter + 1
 
+# zips lists together
+new_format = zip(emp_id, first_names, last_names, new_dob, new_ssns, new_states)
 
-print(emp_id[:10])
-print(first_names[:10])
-print(last_names[:10])
-print(new_dob[:10])
-print(new_ssns[:10])
-print(states[:10])
-print(new_states[:10])
+# writes to a csv file
+output_file = os.path.join("output.csv")
 
+with open(output_file, "w") as datafile:
+    writer = csv.writer(datafile)
+    writer.writerow(["Emp ID", "First Name", "Last Name", "DOB", "SSN", "State"])
+    writer.writerows(new_format)
