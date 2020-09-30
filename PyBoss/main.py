@@ -3,7 +3,7 @@ import csv
 
 employee_csv = os.path.join("Resources", "employee_data.csv")
 
-# function to convert state name to state abbreviation
+# function to convert state name to state abbreviation (dictionary from GitHub link)
 def get_state(full_state):
     us_state_abbrev = {
         'Alabama': 'AL',
